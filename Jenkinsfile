@@ -14,10 +14,7 @@ pipeline{
         stage('Build'){
             steps{
                 script{
-                    image_1 = docker.build("dbrownless1/project_02_service_01")
-                    image_2 = docker.build("dbrownless1/project_02_service_02")
-                    image_3 = docker.build("dbrownless1/project_02_service_03")
-                    image_4 = docker.build("dbrownless1/project_02_service_04")
+                    sh 'docker-compose build'
                 }
             }
         }
@@ -40,8 +37,7 @@ pipeline{
         // }
         stage('Deploy'){
             steps{
-                // sh "bash deploy.sh"
-                sh "docker-compose pull && docker-compose up -d"
+                sh "bash deploy.sh"
             }
         }
     }
