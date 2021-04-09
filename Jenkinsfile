@@ -25,10 +25,10 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('https://registry.hub.docker.com', docker-hub-credentials){
-                        image_1.push("$(env.app_version)")
-                        image_2.push("$(env.app_version)")
-                        image_3.push("$(env.app_version)")
-                        image_4.push("$(env.app_version)")
+                        image_1.push("${env.app_version}")
+                        image_2.push("${env.app_version}")
+                        image_3.push("${env.app_version}")
+                        image_4.push("${env.app_version}")
                     }
                 }
             }
