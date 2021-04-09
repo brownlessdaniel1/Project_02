@@ -18,11 +18,11 @@ def home():
 
 
     data_to_be_saved = {"int_one":response_service_2, "int_two":response_service_3, "sum":response_service_4} 
-    
+
     previous_records = requests.post(service_4 + "/record_data", json=data_to_be_saved).json()
 
 
-    return render_template("home.html", int_one=str(response_service_2), int_two=str(response_service_3), total=previous_records)
+    return render_template("home.html", int_one=str(response_service_2), int_two=str(response_service_3), total= response_service_4, previous_records=previous_records)
 
 
 
