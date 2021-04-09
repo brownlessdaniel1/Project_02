@@ -6,11 +6,11 @@ pipeline{
         rollback = 'false'
     }
     stages {
-        stage('Test'){
-            steps{
-                sh "bash pytest.sh" // write bash script that tests all microservices in 1 container.
-            }
-        }
+        // stage('Test'){
+        //     steps{
+        //         sh "bash pytest.sh" // write bash script that tests all microservices in 1 container.
+        //     }
+        // }
         stage('Build'){
             steps{
                 script{
