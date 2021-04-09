@@ -18,19 +18,13 @@ def home():
 
 
     data_to_be_saved = {"int_one":response_service_2, "int_two":response_service_3, "sum":response_service_4} 
-    requests.post(service_4 + "/record_data", json=data_to_be_saved)
-
-    previous_data_dict = {}
-
-
-    return render_template("home.html", int_one=str(response_service_2), int_two=str(response_service_3), total=str(response_service_4))
+    
+    
+    previous_records = requests.post(service_4 + "/record_data", json=data_to_be_saved).json()
 
 
-@app.route("/previous_data")
-def previous_data():
-    record_json_output = requests.get(service_4 + "/read_data").json()
-
-    return record_json_output
+    # return render_template("home.html", int_one=str(response_service_2), int_two=str(response_service_3), total=str(response_service_4))
+    return render_template("home.html", int_one=str(response_service_2), int_two=str(response_service_3), total=previous_records)
 
 if __name__ == "__main__":
     app.run(debug=True, port="5000")
