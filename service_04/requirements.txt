@@ -1,9 +1,7 @@
 Flask==1.1.1
-Flask-SQLAlchemy==2.5.0
 Werkzeug==0.16.1
-flask_wtf
-wtforms
+Flask-SQLAlchemy==2.5.0
+pymysql
 pytest
 pytest-cov
 flask-testing
-pymysql
