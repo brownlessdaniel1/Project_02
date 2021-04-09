@@ -1,7 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
+service_04/test-db
 
 # C extensions
 *.so
