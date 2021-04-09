@@ -1,9 +1,9 @@
 from flask import Flask, render_template, Response, jsonify
 import requests
 
-service_2 = "http://localhost:5001"
-service_3 = "http://localhost:5002"
-service_4 = "http://localhost:5003"
+service_2 = "http://service_02:5001"         # Was: localhost
+service_3 = "http://service_03:5002"
+service_4 = "http://service_04:5003"
 
 app = Flask(__name__, template_folder=".")
 
