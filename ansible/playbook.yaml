@@ -7,4 +7,5 @@
   - docker
   - worker
 - hosts: nginx
+  roles:
   - nginx
