@@ -1,11 +1,17 @@
-swarm:
-  hosts:
-    children:
-      managers:
-        manager:
-      workers:
+all:
+  children:
+    managers:
+      hosts:
+        manager:     
+    workers:
+      hosts:
         worker1:
         worker2:
-nginx:
-  hosts:
-    nginx:
+    # nginx:
+    #   nginx:
+  vars:
+    ansible_user: jenkins
+    ansible_ssh_private_key_file: "/home/jenkins/.ssh/id_rsa"
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    users:
+      - username: jenkins
