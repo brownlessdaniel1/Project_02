@@ -2,31 +2,37 @@ version: "3.8"
 services:
   service_01:
     container_name: service_01
-    image: dbrownless1/project_02_service_01:latest
+    image: dbrownless1/project_02_service_01:${VERSION}
     build: ./service_01
     ports:
       - target: 5000
         published: 5000
         protocol: tcp
+    deploy:
+      replicas: ${replicas}
   service_02:
     container_name: service_02
-    image: dbrownless1/project_02_service_02:latest
+    image: dbrownless1/project_02_service_02:${VERSION}
     build: ./service_02
     ports:
       - target: 5001
         published: 5001
         protocol: tcp
+    deploy:
+      replicas: ${replicas}
   service_03:
     container_name: service_03
-    image: dbrownless1/project_02_service_03:latest
+    image: dbrownless1/project_02_service_03:${VERSION}
     build: ./service_03
     ports:
       - target: 5002
         published: 5002
         protocol: tcp
+    deploy:
+      replicas: ${replicas}
   service_04:
     container_name: service_04
-    image: dbrownless1/project_02_service_04:latest
+    image: dbrownless1/project_02_service_04:${VERSION}
     build: ./service_04
     ports:
         - target: 5003
@@ -34,3 +40,5 @@ services:
           protocol: tcp
     environment:
       DATABASE_URI: ${DATABASE_URI}
+    deploy:
+      replicas: ${replicas}
