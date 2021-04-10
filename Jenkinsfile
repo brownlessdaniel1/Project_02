@@ -3,7 +3,6 @@ pipeline{
     environment{
         DATABASE_URI = credentials("DATABASE_URI")
         app_version = '0.1'
-        docker_password = credentials("docker_password")
     }
     stages {
         // stage('Test'){
@@ -20,7 +19,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
-                        sh "docker login -u dbrownless1 -p ${env.docker_password} && docker-compose push"
+                        sh "docker-compose push"
                     }
                 }
             }
