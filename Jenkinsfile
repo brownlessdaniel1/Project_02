@@ -19,7 +19,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
-                        sh "docker-compose push"
+                        sh "docker login -u ${docker-hub-credentials_USR} -p ${docker-hub-credentials_PSW} && docker-compose push"
                     }
                 }
             }
