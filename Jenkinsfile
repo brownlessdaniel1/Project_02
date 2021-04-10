@@ -20,7 +20,6 @@ pipeline{
         stage('Push'){
             steps{
                 sh "docker login -u ${env.docker_username} -p ${env.docker_password} && docker-compose push"
-                }
             }
         }
         stage('Config'){
