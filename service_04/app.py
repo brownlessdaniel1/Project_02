@@ -1,10 +1,11 @@
 from flask import Flask, Response, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
+import os
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///test-db"
+
+app.config["SQLALCHEMY_DATABASE_URI"]=os.getenv("DATABASE_URI")
 app.config["SECRET_KEY"]="SECRET_KEY"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
 db = SQLAlchemy(app)
@@ -42,7 +43,7 @@ def record_data():
     output = {}
     for row in Record.query.all():
         output[row.id] = [str(row.int_one), str(row.int_two), str(row.sum)]
-    
+
 
     return jsonify(output)
 

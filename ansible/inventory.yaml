@@ -1,0 +1,11 @@
+swarm:
+  hosts:
+    children:
+      managers:
+        manager:
+      workers:
+        worker1:
+        worker2:
+nginx:
+  hosts:
+    nginx:

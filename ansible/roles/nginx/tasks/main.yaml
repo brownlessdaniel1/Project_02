@@ -1,0 +1,13 @@
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+- name: Copy nginx.conf
+  copy:
+  src: /home/jenkins/.jenkins/workspace/Project_02/nginx.conf
+  dest: /etc/nginx/nginx.conf
+- name: Start NGINX Service
+  service:
+    name: nginx
+    state: reloaded
