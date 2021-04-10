@@ -6,3 +6,5 @@
   roles:
   - docker
   - worker
+- hosts: nginx
+  - nginx

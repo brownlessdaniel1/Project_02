@@ -2,8 +2,7 @@ version: "3.8"
 services:
   service_01:
     container_name: service_01
-    # image: dbrownless1/project_02_service_01:${app_version}
-    image: dbrownless1/project_02_service_01
+    image: dbrownless1/project_02_service_01:latest
     build: ./service_01
     ports:
       - target: 5000
@@ -11,8 +10,7 @@ services:
         protocol: tcp
   service_02:
     container_name: service_02
-    # image: dbrownless1/project_02_service_02:${app_version}
-    image: dbrownless1/project_02_service_02
+    image: dbrownless1/project_02_service_02:latest
     build: ./service_02
     ports:
       - target: 5001
@@ -20,8 +18,7 @@ services:
         protocol: tcp
   service_03:
     container_name: service_03
-    # image: dbrownless1/project_02_service_03:${app_version}
-    image: dbrownless1/project_02_service_03
+    image: dbrownless1/project_02_service_03:latest
     build: ./service_03
     ports:
       - target: 5002
@@ -29,8 +26,7 @@ services:
         protocol: tcp
   service_04:
     container_name: service_04
-    # image: dbrownless1/project_02_service_04:${app_version}
-    image: dbrownless1/project_02_service_04
+    image: dbrownless1/project_02_service_04:latest
     build: ./service_04
     ports:
         - target: 5003
