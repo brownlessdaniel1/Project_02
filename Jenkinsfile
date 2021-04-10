@@ -19,7 +19,11 @@ pipeline{
         }
         stage('Push'){
             steps{
-                sh "docker login -u ${env.docker_username} -p ${env.docker_password} && docker-compose push"
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
+                        sh "docker login -u ${env.docker_username} -p ${env.docker_password} && docker-compose push"
+                    }
+                }
             }
         }
         stage('Config'){
