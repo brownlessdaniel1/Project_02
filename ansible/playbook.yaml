@@ -1,22 +1,8 @@
-- hosts: swarm
-  tasks:
-  - name: 'Install Docker'
-    apt:
-      name: docker
-      state: latest
-      update_cache: true
-  - name: 'Install Docker Compose'
-    apt:
-    - name: docker-compose
-  
 - hosts: managers
-  tasks:
-  - name: init swarm
-    # docker swarm init
-
-
-- hosts: nginx
-#  install nginx
-# set up conf file????
-
-
+  roles:
+  - docker
+  - manager
+- hosts: workers
+  roles:
+  - docker
+  - worker
