@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment{
-        VERSION = '2.6'
-        rollback = 'false'
+        VERSION = '1'
+        rollback = 'true'
         replicas = 10
         DATABASE_URI = credentials("DATABASE_URI")
         docker_password = credentials("docker_password")
