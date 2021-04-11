@@ -1,0 +1,10 @@
+Flask==1.1.1
+Jinja2==2.10.3
+Werkzeug==0.16.1
+requests==2.25.1
+Flask-SQLAlchemy==2.5.0
+pymysql
+pytest
+pytest-cov
+flask-testing
+requests-mock
