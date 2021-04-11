@@ -1,7 +1,7 @@
 from application import db
 
-class Record(db.Model):
+class Colour_Statement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    int_one = db.Column(db.Integer, nullable=False)
-    int_two = db.Column(db.Integer, nullable=False)
-    sum = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(20), nullable=False)
+    colour = db.Column(db.String(20), nullable=False)
+    statement = db.Column(db.String(50), nullable=False)

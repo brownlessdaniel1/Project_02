@@ -1,24 +1,14 @@
 from application import db
 from flask import jsonify
-from application.models import Record
+from application.models import Colour_Statement
 
 
 db.drop_all()
 db.create_all()
 
-asdf = Record(int_one=2,int_two=4,sum=6)
-asdff = Record(int_one=3,int_two=4,sum=7)
-db.session.add(asdf)
-db.session.commit()
-db.session.add(asdff)
+row_1 = Colour_Statement(name="Dan", colour="Green", statement="Dan likes Green!")
+db.session.add(row_1)
 db.session.commit()
 
-for item in Record.query.all():
-    print(item.id, item.int_one, item.int_two, item.sum)
-
-output = {}
-for row in Record.query.all():
-    output[row.id] = [str(row.int_one), str(row.int_two), str(row.sum)]
-
-
-print(output)
+for item in Colour_Statement.query.all():
+    print(item.id, item.name, item.colour, item.statement)

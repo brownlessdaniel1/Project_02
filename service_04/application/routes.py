@@ -1,35 +1,32 @@
 from flask import request, jsonify
-import os
 from application import app, db
-from application.models import Record
+from application.models import Colour_Statement
 
-@app.route("/sum_ints", methods=["POST"])
-def sum_data():
+@app.route("/generate_statement", methods=["POST"])
+def generate_statement():
 
     input_data = request.get_json()
-    int_one = input_data["int_one"]
-    int_two = input_data["int_two"]
+    name = input_data["name"]
+    colour = input_data["colour"]
 
-    sum = int_one + int_two
+    statement = f"{name} likes {colour}!"
 
-    return jsonify({"output": sum})
+    return jsonify({"output": statement})
 
-@app.route("/record_data", methods=["POST"])
-def record_data():
+@app.route("/record_statement", methods=["POST"])
+def record_statement():
     
     input_data = request.get_json()
-    int_one = input_data["int_one"]
-    int_two = input_data["int_two"]
-    sum = input_data["sum"]
+    name = input_data["name"]
+    colour = input_data["colour"]
+    statement = input_data["statement"]
 
-    new_row = Record(int_one=int_one, int_two=int_two, sum=sum)
+    new_row = Colour_Statement(name=name, colour=colour, statement=statement)
     db.session.add(new_row)
     db.session.commit()
 
     output = {}
     for row in Record.query.all():
-        
-        output[row.id] = [str(row.int_one), str(row.int_two), str(row.sum)]
-
+        output[row.id] = [str(row.name), str(row.colour), str(row.statement)]
 
     return jsonify(output)
