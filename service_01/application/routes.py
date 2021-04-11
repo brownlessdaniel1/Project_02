@@ -18,6 +18,8 @@ def home():
     statement = requests.post(service_4 + "/generate_statement", json=data_to_be_sent).json()["output"]
 
     data_to_be_saved = {"name":name, "colour":colour, "statement":statement} 
-    previous_statements = requests.post(service_4 + "/record_statement", json=data_to_be_saved).json()
+    previous_statements = requests.post(service_4 + "/record_statement", json=data_to_be_saved).data
     
-    return render_template("index.html", name=str(name), colour=str(colour), statement=statement, previous_statements=previous_statements, version=os.getenv("VERSION"))
+    data_decoded = json.loads(previous_statements.decode('utf-8'))
+
+    return render_template("index.html", name=str(name), colour=str(colour), statement=statement, previous_statements=data_decoded, version=os.getenv("VERSION"))
