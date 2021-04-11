@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        VERSION = '1'
+        VERSION = '2.5.1'
         rollback = 'true'
         replicas = 10
         DATABASE_URI = credentials("DATABASE_URI")
