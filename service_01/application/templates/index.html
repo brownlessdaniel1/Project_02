@@ -12,10 +12,8 @@
         <p>service 3 randomly generated this number: {{ int_two }}</p>
         <p>service 4 added those numbers to get: {{ total }}</p>
         <p>service 4 added these numbers together, and stored it in the database:</p>
-        <!-- {% for item in previous_records %}
-        <p>{{ item }}</p>
-        {% endfor %} -->
-        <p>{{ previous_records[1] }}</p>
-        <p>{{ version }}</p>
+        {% for item in previous_records %}
+        <p> item </p>
+        {% endfor %}
     </body>
 </html>
