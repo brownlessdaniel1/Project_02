@@ -1,6 +1,6 @@
-from app import db
+from application import db
 from flask import jsonify
-from app import Record
+from application.models import Record
 
 
 db.drop_all()
