@@ -21,4 +21,9 @@ def home():
 
     previous_records = requests.post(service_4 + "/record_data", json=data_to_be_saved).json()
 
+    # display_dict = {}
+    # for item in previous_records:
+    # display_dict[item] = previous_records[item][item]
+
+
     return render_template("index.html", int_one=str(response_service_2), int_two=str(response_service_3), total= response_service_4, previous_records=previous_records, version=os.getenv("VERSION"))
