@@ -28,7 +28,6 @@ def record_data():
 
     output = {}
     for row in Record.query.all():
-    # for row in Record.query.limit(2).all()
         output[row.id] = [str(row.int_one), str(row.int_two), str(row.sum)]
 
 
