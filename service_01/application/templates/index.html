@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Colours</title>
+    </head>
+    <body>
+        <h1>Colours</h1>
+        <h2>Refresh to see people's favourite colour!</h2>
+        <hr>
+        <p>Service 2 randomly selected this name: {{ name }}</p>
+        <p>Service 3 randomly colour this number: {{ colour }}</p>
+        <p>Service 4 combined the results into this statement: {{ statement }}</p>
+        <p>Service 4 added these numbers together, and stored it in the database:</p>
+        <hr>
+        <table>
+            <th>Name</th>
+            <th>Colour</th>
+            <th>Statement</th>
+            {% for item in previous_statements %}
+            <tr>
+                <td>{{ previous_statements[item][0] }}</td>
+                <td>{{ previous_statements[item][1] }}</td>
+                <td>{{ previous_statements[item][2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>       
+        <hr>
+        <p>version: {{ version }}</p>
+    </body>
+</html>
