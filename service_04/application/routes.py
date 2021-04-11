@@ -26,7 +26,7 @@ def record_statement():
     db.session.commit()
 
     output = {}
-    for row in Record.query.all():
+    for row in Colour_Statement.query.all():
         output[row.id] = [str(row.name), str(row.colour), str(row.statement)]
 
     return jsonify(output)
