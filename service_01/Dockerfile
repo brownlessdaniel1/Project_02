@@ -3,8 +3,7 @@ ARG VERSION
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-COPY app.py .
-COPY home.html .
+COPY . .
 EXPOSE 5000
 ENV VERSION=${VERSION}
 ENTRYPOINT ["python3", "app.py"]

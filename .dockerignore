@@ -1,0 +1,8 @@
+# ignore tests folder
+tests
+
+# ignore pycache
+__pycache__
+
+# ignore create.py
+create.py
