@@ -13,11 +13,19 @@
         <p>service 4 added those numbers to get: {{ total }}</p>
         <p>service 4 added these numbers together, and stored it in the database:</p>
         <hr>
-        {% for item in previous_records %}
-        <p>{{ previous_records[item][1] }}</p>
-        {% endfor %}
+        <table>
+            <th>number 1</th>
+            <th>number 2</th>
+            <th>number 3</th>
+            {% for item in previous_records %}
+            <tr>
+                <td>{{ previous_records[item][0] }}</td>
+                <td>{{ previous_records[item][1] }}</td>
+                <td>{{ previous_records[item][2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>       
         <hr>
         <p>version: {{ version }}</p>
-        <!-- <p>{{ previous_records }}</p>     -->
     </body>
 </html>
