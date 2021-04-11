@@ -27,7 +27,7 @@ def record_data():
     db.session.commit()
 
     output = {}
-    for row in Record..query.order_by(desc("id")).limit(5).all():
+    for row in Record.query.all():
         
         output[row.id] = [str(row.int_one), str(row.int_two), str(row.sum)]
 
