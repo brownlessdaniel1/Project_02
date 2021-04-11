@@ -1,10 +1,13 @@
-from flask import Flask, jsonify
-from random import randint
+from flask import jsonify
+from random import choice
 from application import app
 
-@app.route("/int_one", methods=["GET"])     # App1 comes here and gets this random number.
-def int_one():
+@app.route("/name_gen", methods=["GET"])
+def name_gen():
 
-    output = randint(1, 100)
+    # return a randomly selected name
+
+    names = ["Sophie", "Olivia", "Riley", "Emma", "Ava", "Isabella", "Aria", "Aaliya", "Liam", "Noah", "Jackson", "Aiden", "Elijah", "Grayson", "Lucas", "Oliver"]
+    output = choice(names)
 
     return jsonify({"output": output})

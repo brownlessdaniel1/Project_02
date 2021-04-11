@@ -1,11 +1,13 @@
-from flask import Flask, jsonify
-from random import randint
+from flask import jsonify
+from random import choice
 from application import app
 
+@app.route("/colour_gen", methods=["GET"])
+def colour_gen():
 
-@app.route("/int_two", methods=["GET"])         # App1 comes here and gets this random number.
-def int_two():
+    # return a randomly selected colour
 
-    output = randint(1, 100)
+    colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "pink", "silver", "gold", "beige", "brown", "grey", "black", "white"]
+    output = choice(colours)
 
     return jsonify({"output": output})
