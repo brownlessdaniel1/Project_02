@@ -1,5 +1,5 @@
 #!/bin/bash
-echo testing!!!
+echo testing
 
 # # install dependencies
 # sudo apt-get update
