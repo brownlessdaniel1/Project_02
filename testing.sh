@@ -15,14 +15,17 @@ echo testing!!!
 # cd service_01
 # pytest --cov application
 # cd ..
+
 # # test service 2
 # cd service_02
 # pytest --cov application
 # cd ..
+
 # # test service 3
 # cd service_03
 # pytest --cov application
 # cd ..
+
 # # test service 4
 # cd service_04
 # pytest --cov application

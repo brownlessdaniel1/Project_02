@@ -3,24 +3,27 @@ Author: Daniel Brownless
 
 ## Introduction
 
-This is a simple 4-part micro-service web-app, built using Python Flask api. \
-\
-The focus of this project is the implementation of my Pipeline, aiming to acheive Continuous Integration and Continuous Deployment.\
+This is a simple 4-part micro-service web-app, built using Python Flask api.
 
+
+
+The focus of this project was the implementation of my Pipeline, and acheiving to acheive Continuous Integration and Deployment.
+
+
+My app:
 &nbsp;
-![Pipeline](Assets/App.PNG)
+![My app](Assets/App.PNG)
 &nbsp;
 
 ## micro-services
-* Service 1 handles the front end.
-* Services 2 and 3 and 4 act as the backend.
+* Service 1 handles the front end. Services 2 and 3 and 4 act as the backend.
 
 * Upon arrival at the 'homepage', service 1 sends a GET request to service 2.
 * In response, Services 2 and 3 randomly select a name, and colour from a list, and return this to service 1.
 * Service 1 sends this information to service 4, where it is combined into a statement, and returned to service 1.
 * Service 1 then sends all the data back to service 4, where it is persisted in the database.
 * Service 4 then reads the current contents of the data base, and returns it to service 1.
-* Finally, Service one reders a HTML template, displaying all of the information.
+* Finally, Service 1 renders a HTML template, displaying all of the information.
 * Data is transferred between services as JSON.
 
 ## Tools and Technologies
@@ -33,6 +36,7 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
 * Frameworks: **Flask API**
 * Version Control: **Git**
 * Version Control System: **GitHub**
+* Orchestration Tool & Containerisation: **Docker**
 * CI Server: **Jenkins**
 * Automated Testing: **Pytest**
 * Build Tools: Jenkins, **Docker**
@@ -47,7 +51,7 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
 
 #### **Test**
 * Unfortunatley, I was unable to get my unittesting to pass successfully.
-* For presentation, I have ommitted this step from my pipeline.
+* In the interest of showcasing the rest of my pipeline, I have commented out the test commands from the 'testing' bash script.
 #### **Build**
 * To build my code, I used Docker-compose.
 #### **Push**
@@ -58,26 +62,38 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
 * My ansible configuration is described below.
 
 #### **Deploy**
-* In this stage, a bash script is run, which copies the docker-compose file into the swarm-manager node.
+* In this stage, the 'deploy' bash script is run, which copies the docker-compose file into the swarm-manager node.
 * The script also sets the jenkins secrets (database uri, version and the number of replicas for each service) as environment variables on the swarm-manager node.
   * This allows each service to access the information when needed.
 * finally, the application is deployed using 'docker stack deploy', passing in the location of the docker-compose file from earlier.
-  * This command pulls the images, with the current version number, from dockerhub, and uses them to create containers, which are allocated accross the swarm.
+  * This command pulls the images, with the current version tag, from dockerhub, and uses them to create containers, which are allocated accross the swarm.
 #### **Comments**
 * I have also implemented a 'rollback' parameter, giving the ability to deploy the application using an older image.
   * When set to 'true', the **test**, **build** and **push** stages are ommitted (unnecessary, due to an older image being used).
-* I have implemented a 'version' parameter, allowing for image-versioning in the **push** stage.
+  * This feature gives me the ability to quickly revert to a stable build if the application crashes, or the build fails.
+* I have implemented a 'version' parameter, allowing for image-versioning in the **build** and **push** stages.
   * For clarity, the image version is displayed in the html of service 1.
+* My secrets are handled using Jenkin's credentials management
+  * My database URI, Dockerhub username, and Dockerhub password are set on Jenkins.
+    * These are then referenced, and passed through to my docker compose file, so that:
+      * The **push** stage has access to the artifact repository
+      * The images are built with the correct database uri, and the app can run with database access.
+### Docker
+* I am using docker as my orchestration and containerisation tool.
+* This allows me to package up my application, with all its dependencies in a self-contained, ready-to-run package.
+* Each service has its own 'Dockerfile', defining the build process for its image.
+* A docker-compose file is then used, allowing me to orchestrate the builds for all 4 images with a single command.
+* The 'docker-compose' console command is used for the build stage, to create the images for each service in single command.
+  * Having passed in the version tag, and number of replicas.
+* The 'docker push' command is used to push all my built images to the artefact repository.
+* In the config stage, I use ansible to configure the docker swarm nodes (See below)
+* Finally, Docker Swarm is used in the **deploy** stage, with the 'docker stack deploy' command being used to run the application.
 
+* Docker-C
 ### Ansible
 * I use Ansible here as a configuration management tool, to prevent deviation from the desired state of my deployment environment (environment drift).
-* Each time this stage is ran, Ansible ensure the configuration of each machine matches specified configuration.
-* Ansible is managing 4 nodes:
-  * 'manager'
-  * 'worker1'
-  * 'worker2'
-  * 'nginx'
-* These are split into three groups:
+* Each time this stage is ran, Ansible ensures the configuration of each machine matches specified configuration.
+* Ansible is managing 4 nodes, split into three groups:
   * 'managers' group
     * 'manager' node
   * 'workers' group
@@ -85,7 +101,7 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
     * 'worker2' node
   * 'nginx' group
     * nginx machine
-* I then defined four roles for ansible:
+* My ansible roles are defined as follows:
   * 'docker' - install docker, with dependencies, set jenkins as a user.
     * applied to the 'managers' and 'workers' groups.
   * 'manager' - initialise swarm.
@@ -114,7 +130,11 @@ statement    | String, not-null
 &nbsp;
 
 ## Testing
-asdf
+Unfortunatley, I was unable to get my unit-testing to pass successfully.
+I configured this stage so that each service would be tested in isolation.
+
+
+The 'testing' bash script sets up a 'testing' virtual environment, and installs the required dependencies, and then tests each service in isolation. It then cleans up: deactivating and removing the virtual environment.
 
 ## Risk Assessment
 | Description | Evaluation | Likelihood | Impact | Responsibility | Response | Control Measures |
