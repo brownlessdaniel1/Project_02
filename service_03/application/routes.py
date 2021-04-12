@@ -7,7 +7,7 @@ def colour_gen():
 
     # return a randomly selected colour
 
-    colours = ["red"]
+    colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "pink", "silver", "gold", "beige", "brown", "grey", "black", "white"]
     output = choice(colours)
 
     return jsonify({"output": output})
