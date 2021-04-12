@@ -7,7 +7,7 @@ def name_gen():
 
     # return a randomly selected name
 
-    names = ["Dan", "Soso", "Titi", "Minty", "Gamora", "Zac", "Sabrina"]
+    names = ["Sophie", "Olivia", "Riley", "Emma", "Ava", "Isabella", "Aria", "Aaliya", "Liam", "Noah", "Jackson", "Aiden", "Elijah", "Grayson", "Lucas", "Oliver"]
     output = choice(names)
 
     return jsonify({"output": output})
