@@ -9,7 +9,7 @@ def generate_statement():
     name = input_data["name"]
     colour = input_data["colour"]
 
-    statement = f"{name} likes {colour}!"
+    statement = f"{name} really likes {colour}!"
 
     return jsonify({"output": statement})
 
