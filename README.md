@@ -42,7 +42,7 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
 * Load Balancer: **Nginx**
 
 &nbsp;
-![Pipeline](Assets/pipeline.PNG)
+![Pipeline](Assets/pipeline.png)
 &nbsp;
 
 #### **Test**
