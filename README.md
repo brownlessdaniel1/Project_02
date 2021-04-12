@@ -8,7 +8,7 @@ This is a simple 4-part micro-service web-app, built using Python Flask api. \
 The focus of this project is the implementation of my Pipeline, aiming to acheive Continuous Integration and Continuous Deployment.\
 
 &nbsp;
-![Pipeline](assets/App.PNG)
+![Pipeline](Assets/App.PNG)
 &nbsp;
 
 ## micro-services
@@ -42,7 +42,7 @@ The focus of this project is the implementation of my Pipeline, aiming to acheiv
 * Load Balancer: **Nginx**
 
 &nbsp;
-![Pipeline](assets/pipeline.PNG)
+![Pipeline](Assets/pipeline.PNG)
 &nbsp;
 
 #### **Test**
@@ -130,7 +130,7 @@ asdf
 | Run out of GCP credit. | I will be unable to host my application an pipeline on GCP, or I will be charged suddenly. | Low | High | Developer | Ensure payment is setup properly, and pay for GCP usage. | Keep an eye on my GCP Credit usage.  Ensure that expensive services, e.g. SQL server operations & data  storage are kept to a minimum. Switch off VM's at night. |
 
 ## Project Planning
-![Project-planning](assets/Project-planning.PNG)
+![Project-planning](Assets/Project-planning.PNG)
 
 
 
